@@ -32,7 +32,7 @@ import re
 import time
 import ntpath
 import sysconfig
-
+from pathlib import Path
 
 import colorama
 
@@ -215,6 +215,7 @@ def set_native_slash(raw_path):
 
 
 def get_mount_point(path):
+    return Path(path).resolve().parents[0]
     """ Returns mount point of given path """
     folders = path.split(os.path.sep)
     mount_point = ''
